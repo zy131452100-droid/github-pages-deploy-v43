@@ -960,6 +960,7 @@ button {
 }
 
 .uploaded-work-frame {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -977,7 +978,8 @@ button {
 
 .uploaded-work-frame .uploaded-media {
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .uploaded-media {
@@ -985,9 +987,10 @@ button {
 }
 
 .uploaded-image {
-  height: auto;
+  height: 100%;
   aspect-ratio: auto;
-  object-fit: contain;
+  object-fit: cover;
+  cursor: zoom-in;
 }
 
 .photo-card .uploaded-work-frame,
@@ -997,10 +1000,6 @@ button {
 .symbol-card .uploaded-work-frame,
 .symbol-hero .uploaded-work-frame {
   border-radius: 16px;
-}
-
-.photo-card .uploaded-image {
-  aspect-ratio: auto;
 }
 
 .photo-card .uploaded-work-frame {
@@ -1026,33 +1025,29 @@ button {
 }
 
 .uploaded-masonry {
-  display: block;
+  display: grid;
   width: 100%;
-  column-gap: 14px;
+  gap: 14px;
 }
 
 .uploaded-masonry-photo {
-  column-count: 4;
-  column-width: 180px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .uploaded-masonry-ip,
 .uploaded-masonry-symbol,
 .uploaded-masonry-ecommerce {
-  column-count: 3;
-  column-width: 220px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .uploaded-masonry-process {
-  column-count: 2;
-  column-width: 260px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .masonry-work-card {
   display: block;
   overflow: hidden;
-  break-inside: avoid;
-  margin: 0 0 14px;
+  margin: 0;
   padding: 0;
   border: 1px solid rgba(200, 155, 90, 0.24);
   border-radius: 16px;
@@ -1060,6 +1055,8 @@ button {
 }
 
 .masonry-work-card .uploaded-work-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
   border: 0;
   border-radius: 15px;
   background: #050403;
@@ -1067,6 +1064,36 @@ button {
 
 .masonry-work-card .uploaded-image {
   vertical-align: top;
+}
+
+.uploaded-masonry-ecommerce .masonry-work-card .uploaded-work-frame,
+.uploaded-masonry-photo .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 4 / 5;
+}
+
+.uploaded-masonry-ip .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 4 / 5;
+}
+
+.uploaded-masonry-symbol .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 16 / 10;
+}
+
+.uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 16 / 9;
+}
+
+.character-materials.uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 4 / 5;
+}
+
+.dossier-masonry-card .uploaded-image,
+.symbol-masonry-card .uploaded-image,
+.dossier-card .uploaded-image,
+.dossier-main .uploaded-image,
+.symbol-card .uploaded-image,
+.symbol-hero .uploaded-image {
+  object-fit: contain;
 }
 
 .uploaded-work-meta {
@@ -1093,6 +1120,61 @@ button {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 52px);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(200, 155, 90, 0.08), transparent 34%),
+    rgba(5, 4, 3, 0.88);
+  opacity: 0;
+  backdrop-filter: blur(18px);
+  transition: opacity 0.26s ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: min(100%, 1180px);
+  max-height: 86vh;
+  border: 1px solid rgba(200, 155, 90, 0.34);
+  border-radius: 18px;
+  background: #050403;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.56);
+  object-fit: contain;
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(200, 155, 90, 0.34);
+  border-radius: 999px;
+  background: rgba(10, 8, 6, 0.72);
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.image-lightbox-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.04);
 }
 
 .video-project {
@@ -1562,7 +1644,7 @@ button {
 .ecommerce-grid.uploaded-masonry,
 .process-materials.uploaded-masonry,
 .storyboard-wall.uploaded-masonry {
-  display: block;
+  display: grid;
 }
 
 .about-section {
@@ -2136,14 +2218,13 @@ button {
   .uploaded-masonry-ip,
   .uploaded-masonry-symbol,
   .uploaded-masonry-ecommerce {
-    column-count: 2;
-    column-width: auto;
-    column-gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .uploaded-masonry-process {
-    column-count: 1;
-    column-width: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .hero-section {
@@ -2228,8 +2309,7 @@ button {
   .uploaded-masonry-symbol,
   .uploaded-masonry-ecommerce,
   .uploaded-masonry-process {
-    column-count: 1;
-    column-width: auto;
+    grid-template-columns: 1fr;
   }
 
   .photo-grid,

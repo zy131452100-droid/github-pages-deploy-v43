@@ -385,7 +385,11 @@ function syncUploadedImageFrame(image) {
   const frame = image.closest(".uploaded-work-frame");
   if (!frame || !image.naturalWidth || !image.naturalHeight) return;
 
-  frame.style.aspectRatio = `${image.naturalWidth} / ${image.naturalHeight}`;
+  frame.style.aspectRatio = "";
+  const ratio = image.naturalWidth / image.naturalHeight;
+  frame.classList.toggle("is-landscape", ratio >= 1.15);
+  frame.classList.toggle("is-portrait", ratio <= 0.86);
+  frame.classList.toggle("is-squareish", ratio > 0.86 && ratio < 1.15);
   frame.classList.add("is-image-fitted");
 }
 
@@ -398,6 +402,44 @@ function fitUploadedImageFrames(root = document) {
     if (image.dataset.frameFitBound === "true") return;
     image.dataset.frameFitBound = "true";
     image.addEventListener("load", () => syncUploadedImageFrame(image), { once: true });
+  });
+}
+
+function closeImagePreview() {
+  const preview = document.querySelector(".image-lightbox");
+  if (!preview) return;
+
+  preview.classList.remove("is-open");
+  window.setTimeout(() => preview.remove(), 260);
+}
+
+function openImagePreview(image) {
+  if (!image?.src) return;
+
+  closeImagePreview();
+
+  const preview = document.createElement("div");
+  preview.className = "image-lightbox";
+  preview.setAttribute("role", "dialog");
+  preview.setAttribute("aria-modal", "true");
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "image-lightbox-close";
+  button.setAttribute("aria-label", "关闭图片预览");
+  button.textContent = "×";
+
+  const previewImage = document.createElement("img");
+  previewImage.src = image.currentSrc || image.src;
+  previewImage.alt = image.alt || "作品预览";
+
+  preview.append(button, previewImage);
+  document.body.append(preview);
+  requestAnimationFrame(() => preview.classList.add("is-open"));
+
+  button.addEventListener("click", closeImagePreview);
+  preview.addEventListener("click", (event) => {
+    if (event.target === preview) closeImagePreview();
   });
 }
 
@@ -1189,6 +1231,16 @@ function bindInteractions() {
       activeTabId = button.dataset.tab;
       renderEcommerceGrid();
     });
+  });
+
+  document.addEventListener("click", (event) => {
+    const image = event.target.closest?.("img.uploaded-image");
+    if (!image || event.target.closest(".image-lightbox")) return;
+    openImagePreview(image);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeImagePreview();
   });
 }
 
