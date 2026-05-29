@@ -315,7 +315,8 @@ function getProcessWorksForStep(project, stepNumber) {
     return works
       .filter((work) => {
         const source = getWorkSource(work);
-        return isRobot ? source.includes("机器人形象/") : source.includes("漫剧人物设定/");
+        if (isRobot) return source.includes("机器人形象/");
+        return source.includes("漫剧人物设定/") && !source.includes("林家亲戚");
       })
       .slice(0, isRobot ? 3 : 12);
   }
@@ -323,7 +324,8 @@ function getProcessWorksForStep(project, stepNumber) {
   if (stepNumber === "02") {
     const sceneWorks = works.filter((work) => {
       const source = getWorkSource(work);
-      return isRobot ? source.includes("机器人场景图/场景图") : source.includes("ai漫剧/场景图/");
+      if (isRobot) return source.includes("机器人场景图/场景图");
+      return source.includes("ai漫剧/场景图/") && !source.includes("d30569dc6d5f3ca77cd67873a9ebe8f5");
     });
 
     if (!isRobot) return sceneWorks.slice(0, 3);
