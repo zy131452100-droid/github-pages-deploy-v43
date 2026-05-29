@@ -10,7 +10,7 @@ open-preview.cmd
 瀹冧細鍚姩鏈湴闈欐€侀瑙堟湇鍔★細
 
 ```text
-http://localhost:3000/?v=aigc-gallery-template-43
+http://localhost:3000/?v=aigc-gallery-template-44
 ```
 
 涔熷彲浠ョ洿鎺ユ墦寮€锛?

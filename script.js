@@ -1080,11 +1080,16 @@ function renderAbout() {
     <section id="about" class="portfolio-section about-section section-layer">
       <div class="section-inner">
         ${sectionIntro("08", "ABOUT / CONTACT", "关于我 / 联系方式")}
-        <div class="about-grid">
+        <div class="about-grid resume-hero">
           <div class="about-copy reveal">
-            <p>
-              张宇，AIGC视觉设计师。<br />
-              专注于 AI 影像生成、商业海报、IP角色设定、AI视频与视觉创意工作流。能够结合 Midjourney、即梦、可灵、ComfyUI、Photoshop 等工具完成从创意概念、视觉生成、分镜设计到商业成片的完整流程。
+            <span class="resume-eyebrow">RESUME / PROFILE</span>
+            <h3>张宇</h3>
+            <p class="resume-role">AIGC Visual Designer</p>
+            <p class="resume-summary">
+              2024年毕业于人物形象设计专业，拥有约2年AIGC视觉创作经验。曾先后在山西与北京参与AIGC视觉内容相关工作，现寻求北京AIGC视觉设计、AI视频设计及内容创意方向机会。
+            </p>
+            <p class="resume-summary">
+              专注AI图像、AI视频、角色IP、电商视觉与电影感分镜创作，擅长将创意概念转化为完整视觉方案。具备从风格定位、Prompt设计、画面生成、视觉优化到项目包装的完整执行能力。
             </p>
           </div>
           <div class="contact-panel reveal">
@@ -1094,6 +1099,60 @@ function renderAbout() {
                 <p>PLACEHOLDER</p>
               </div>
             `).join("")}
+          </div>
+        </div>
+        <div class="resume-archive">
+          <div class="resume-panel resume-experience-panel reveal">
+            <div class="resume-panel-head">
+              <span>EXPERIENCE</span>
+              <h3>工作经历</h3>
+            </div>
+            <div class="resume-timeline">
+              <article class="resume-timeline-item">
+                <div>
+                  <span>2024.06 - 2025.02</span>
+                  <h4>AIGC视觉设计师｜山西</h4>
+                </div>
+                <p>参与商业视觉、人物写真、电商海报、新媒体素材等AIGC内容制作，负责AI图像生成、Prompt优化、画面调整与视觉风格统一。</p>
+              </article>
+              <article class="resume-timeline-item">
+                <div>
+                  <span>2025.03 - 2025.09</span>
+                  <h4>AIGC视觉设计师 / AI视频设计师｜北京</h4>
+                </div>
+                <p>参与AI图片与AI视频项目制作，负责角色设定、分镜拆解、视频提示词撰写、画面生成与后期优化，熟悉AI短片、AI漫剧及广告视觉内容流程。</p>
+              </article>
+              <article class="resume-timeline-item">
+                <div>
+                  <span>2025.10 - 至今</span>
+                  <h4>独立AIGC视觉创作者｜北京 / 远程</h4>
+                </div>
+                <p>持续创作个人AIGC作品集，方向涵盖AI视频、IP角色、人物写真、电商海报、超级符号、电影海报与视觉实验。</p>
+              </article>
+            </div>
+          </div>
+          <div class="resume-panel resume-skills-panel reveal">
+            <div class="resume-panel-head">
+              <span>SKILLS</span>
+              <h3>能力标签</h3>
+            </div>
+            <div class="resume-skill-cloud">
+              ${["AI图像生成", "AI视频生成", "Prompt Design", "角色一致性", "分镜设计", "IP角色设计", "电商视觉", "商业海报", "AI写真", "图生视频", "Photoshop", "剪映", "Premiere"].map((skill) => `<span>${skill}</span>`).join("")}
+            </div>
+          </div>
+          <div class="resume-panel resume-project-panel reveal">
+            <div class="resume-panel-head">
+              <span>SELECTED PROJECTS</span>
+              <h3>精选项目</h3>
+            </div>
+            <div class="resume-project-list">
+              ${["AI短片《机器人想看一次海》", "AIGC人物写真系列", "IP角色设计系列", "电商AIGC视觉设计", "超级符号与品牌视觉"].map((project, index) => `
+                <a href="#${["ai-video", "ai-photo", "ip-design", "ecommerce", "super-symbol"][index]}" data-section-link="${["ai-video", "ai-photo", "ip-design", "ecommerce", "super-symbol"][index]}">
+                  <span>${String(index + 1).padStart(2, "0")}</span>
+                  <p>${project}</p>
+                </a>
+              `).join("")}
+            </div>
           </div>
         </div>
         <footer class="site-footer">
