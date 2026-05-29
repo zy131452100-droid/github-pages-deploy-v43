@@ -26,8 +26,7 @@ const homeDirectoryItems = [
     label: "AI视频",
     tag: "AI VIDEO DOSSIER",
     description: "两个视频项目档案，展示角色、场景与分镜制作流程。",
-    status: "2 PROJECTS",
-    featured: true
+    status: "2 PROJECTS"
   },
   {
     id: "ai-commercial",
@@ -58,8 +57,8 @@ const homeDirectoryItems = [
     index: "07",
     label: "电商海报",
     tag: "COMMERCIAL POSTER",
-    description: "精修产品、风格参考海报、指定人物产品三类商业视觉入口。",
-    status: "3 TABS"
+    description: "风格参考海报、指定人物产品两类商业视觉入口。",
+    status: "2 TABS"
   },
   {
     id: "about",
@@ -173,17 +172,6 @@ const processSteps = [
 ];
 
 const ecommerceTabs = [
-  {
-    id: "retouch",
-    label: "精修产品",
-    tag: "REFINED PRODUCT",
-    works: Array.from({ length: 6 }, (_, index) => ({
-      title: `产品精修占位 ${String(index + 1).padStart(2, "0")}`,
-      tag: "ECOMMERCE POSTER",
-      keywords: "质感 / 光影 / 商业转化",
-      assetSlot: `retouch-${index + 1}`
-    }))
-  },
   {
     id: "reference",
     label: "风格参考海报",
@@ -318,7 +306,7 @@ function getProcessWorksForStep(project, stepNumber) {
         if (isRobot) return source.includes("机器人形象/");
         return source.includes("漫剧人物设定/") && !source.includes("林家亲戚");
       })
-      .slice(0, isRobot ? 3 : 12);
+      .slice(0, isRobot ? 4 : 12);
   }
 
   if (stepNumber === "02") {
@@ -1089,7 +1077,7 @@ function renderEcommerce() {
           "07",
           "COMMERCIAL POSTER SYSTEM",
           "电商海报",
-          "按精修产品、风格参考海报、指定人物产品三个商业方向组织占位卡片，保持干净、可替换、便于扩展。"
+          "按风格参考海报、指定人物产品两个商业方向组织作品卡片，保持干净、可替换、便于扩展。"
         )}
         <div class="tabs reveal" role="tablist" aria-label="电商海报分类">
           ${ecommerceTabs
