@@ -1967,6 +1967,38 @@
       "mimeType": "image/png",
       "size": 2192973,
       "createdAt": "2026-05-28T08:55:39.1795302+00:00"
+    },
+    {
+      "id": "1d5ebfcb-b910-4faf-aa98-d6a4773daade",
+      "section": "ai-photo",
+      "category": "gallery",
+      "title": "ai生成写真 / 7",
+      "tag": "AI PHOTO",
+      "description": "来源：桌面/张宇作品集/ai生成写真/7.png（原文件：ChatGPT Image 2026年5月28日 14_51_08 (1).png）",
+      "keywords": "ai生成写真",
+      "duration": "",
+      "fileUrl": "assets/uploads/1780060000001-aigc-photo-7-ChatGPT-Image-2026-05-28-14_51_08-1.png",
+      "fileName": "ChatGPT Image 2026年5月28日 14_51_08 (1).png",
+      "mediaType": "image",
+      "mimeType": "image/png",
+      "size": 1705938,
+      "createdAt": "2026-05-29T00:00:00.000Z"
+    },
+    {
+      "id": "4002aded-5247-45d4-8e24-2cac15bf1835",
+      "section": "ai-photo",
+      "category": "gallery",
+      "title": "ai生成写真 / 8",
+      "tag": "AI PHOTO",
+      "description": "来源：桌面/张宇作品集/ai生成写真/8.png（原文件：ChatGPT Image 2026年5月28日 14_51_10 (4).png）",
+      "keywords": "ai生成写真",
+      "duration": "",
+      "fileUrl": "assets/uploads/1780060000002-aigc-photo-8-ChatGPT-Image-2026-05-28-14_51_10-4.png",
+      "fileName": "ChatGPT Image 2026年5月28日 14_51_10 (4).png",
+      "mediaType": "image",
+      "mimeType": "image/png",
+      "size": 1493890,
+      "createdAt": "2026-05-29T00:00:00.000Z"
     }
   ]
 }

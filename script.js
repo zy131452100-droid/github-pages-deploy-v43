@@ -321,12 +321,30 @@ function getProcessWorksForStep(project, stepNumber) {
   }
 
   if (stepNumber === "02") {
-    return works
-      .filter((work) => {
-        const source = getWorkSource(work);
-        return isRobot ? source.includes("机器人场景图/场景图") : source.includes("ai漫剧/场景图/");
-      })
-      .slice(0, 3);
+    const sceneWorks = works.filter((work) => {
+      const source = getWorkSource(work);
+      return isRobot ? source.includes("机器人场景图/场景图") : source.includes("ai漫剧/场景图/");
+    });
+
+    if (!isRobot) return sceneWorks.slice(0, 3);
+
+    const selectedRobotScenes = [
+      "场景图1/",
+      "场景图2/",
+      "场景图3/",
+      "场景图5/ChatGPT Image 2026年5月19日 16_56_23.png"
+    ];
+    const selected = [];
+    const selectedIds = new Set();
+
+    selectedRobotScenes.forEach((needle) => {
+      const match = sceneWorks.find((work) => getWorkSource(work).includes(needle) && !selectedIds.has(work.id));
+      if (!match) return;
+      selected.push(match);
+      selectedIds.add(match.id);
+    });
+
+    return selected.length ? selected : sceneWorks.slice(0, 4);
   }
 
   if (stepNumber === "03") {
@@ -779,7 +797,8 @@ function renderProcessMaterials(stepNumber, project) {
 
   if (stepNumber === "01") {
     if (uploadedMaterials.length) {
-      return renderProcessUploadedMaterials(uploadedMaterials, "character-materials", "portraitSmall");
+      const className = project.processSource === "robot" ? "character-materials character-materials-wide" : "character-materials";
+      return renderProcessUploadedMaterials(uploadedMaterials, className, "portraitSmall");
     }
 
     return `

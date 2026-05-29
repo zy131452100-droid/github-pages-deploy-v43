@@ -1087,6 +1087,18 @@ button {
   aspect-ratio: 4 / 5;
 }
 
+.character-materials-wide.uploaded-masonry-process {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.character-materials-wide.uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 16 / 10;
+}
+
+.character-materials-wide .uploaded-image {
+  object-fit: contain;
+}
+
 .dossier-masonry-card .uploaded-image,
 .symbol-masonry-card .uploaded-image,
 .dossier-card .uploaded-image,
