@@ -1075,6 +1075,10 @@ button {
   aspect-ratio: 941 / 1672;
 }
 
+.ecommerce-grid-persona.uploaded-masonry-ecommerce .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 941 / 1672;
+}
+
 .uploaded-masonry-ip .masonry-work-card .uploaded-work-frame {
   aspect-ratio: 4 / 5;
 }

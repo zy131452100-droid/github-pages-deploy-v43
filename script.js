@@ -57,7 +57,7 @@ const homeDirectoryItems = [
     index: "07",
     label: "电商海报",
     tag: "COMMERCIAL POSTER",
-    description: "风格参考海报、指定人物产品两类商业视觉入口。",
+    description: "风格参考海报、人物参考海报两类商业视觉入口。",
     status: "2 TABS"
   },
   {
@@ -185,12 +185,12 @@ const ecommerceTabs = [
   },
   {
     id: "persona",
-    label: "指定人物产品",
-    tag: "PERSONA PRODUCT",
+    label: "人物参考海报",
+    tag: "PERSONA REFERENCE",
     works: Array.from({ length: 6 }, (_, index) => ({
-      title: `人物产品占位 ${String(index + 1).padStart(2, "0")}`,
+      title: `人物参考占位 ${String(index + 1).padStart(2, "0")}`,
       tag: "ECOMMERCE POSTER",
-      keywords: "人物 / 产品 / 广告大片",
+      keywords: "人物 / 风格 / 商业海报",
       assetSlot: `persona-${index + 1}`
     }))
   }
@@ -1077,7 +1077,7 @@ function renderEcommerce() {
           "07",
           "COMMERCIAL POSTER SYSTEM",
           "电商海报",
-          "按风格参考海报、指定人物产品两个商业方向组织作品卡片，保持干净、可替换、便于扩展。"
+          "按风格参考海报、人物参考海报两个商业方向组织作品卡片，保持干净、可替换、便于扩展。"
         )}
         <div class="tabs reveal" role="tablist" aria-label="电商海报分类">
           ${ecommerceTabs
