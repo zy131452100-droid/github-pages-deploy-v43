@@ -1104,6 +1104,8 @@ function renderEcommerceGrid() {
   const uploaded = sortBySourcePath(getUploadedWorks("ecommerce", activeTab.id));
   grid.classList.toggle("uploaded-masonry", uploaded.length > 0);
   grid.classList.toggle("uploaded-masonry-ecommerce", uploaded.length > 0);
+  grid.classList.toggle("ecommerce-grid-reference", activeTab.id === "reference");
+  grid.classList.toggle("ecommerce-grid-persona", activeTab.id === "persona");
 
   grid.innerHTML = uploaded.length
     ? uploaded.map((work, index) => renderMasonryWorkCard(work, index, "ecommerce-masonry-card", true)).join("")
