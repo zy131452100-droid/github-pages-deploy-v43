@@ -115,8 +115,8 @@ const commercialVideoItems = [
     tag: "AI COMMERCIAL / 15S",
     duration: "15S",
     description: "适合品牌传播、产品露出和社媒投放的 15 秒 AI 广告成片展示。",
-    bilibiliBvid: "BV19kV46vEUX",
-    sourceUrl: "https://www.bilibili.com/video/BV19kV46vEUX/"
+    bilibiliBvid: "BV1aZVg6nEqm",
+    sourceUrl: "https://www.bilibili.com/video/BV1aZVg6nEqm/"
   },
   {
     index: "AD 02",
