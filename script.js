@@ -98,11 +98,11 @@ const videoProjects = [
   },
   {
     index: "PROJECT 02",
-    title: "AI漫剧《第五集》",
+    title: "重生后，我手撕白莲妹妹",
     tag: "AI VIDEO PROJECT / 2026",
     description: "展示从人物设定、场景概念、分镜设计到视频生成的完整 AIGC 视频创作流程。",
-    bilibiliBvid: "BV1RkV46vEMb",
-    sourceUrl: "https://www.bilibili.com/video/BV1RkV46vEMb/",
+    bilibiliBvid: "BV1tWV96YEG7",
+    sourceUrl: "https://www.bilibili.com/video/BV1tWV96YEG7/",
     processSource: "drama",
     assetSlot: "ai-video-project-02"
   }
