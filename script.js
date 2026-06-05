@@ -1184,7 +1184,7 @@ function renderAbout() {
               </article>
               <article class="resume-timeline-item">
                 <div>
-                  <span>2025.03 - 2025.09</span>
+                  <span>2025.03 - 2026.03</span>
                   <h4>有糖（北京）营销科技有限公司｜AI视频生成师</h4>
                   <p class="resume-location">北京</p>
                 </div>
@@ -1205,15 +1205,6 @@ function renderAbout() {
                   <p>在该阶段工作中，参与了多类型AIGC内容制作，熟悉商业项目对AI视频效率、视觉完成度和内容落地性的要求。能够根据项目目标快速完成画面方向判断、提示词设计、生成测试与结果优化，具备较强的AI视频执行能力和视觉转化能力。</p>
                   <h5>能力沉淀</h5>
                   <p>通过北京阶段的AI视频项目实践，进一步强化了AIGC视觉创作能力，掌握了从脚本理解、分镜拆解、提示词撰写、视频生成到后期包装的完整工作流。能够独立承担AI视频生成、AI视觉素材制作和AIGC内容优化相关工作，适合AI视频生成师、AIGC视觉设计师、AI内容设计师等岗位。</p>
-                </div>
-              </article>
-              <article class="resume-timeline-item">
-                <div>
-                  <span>2025.10 - 至今</span>
-                  <h4>独立AIGC视觉创作者｜北京 / 远程</h4>
-                </div>
-                <div class="resume-detail">
-                  <p>持续创作个人AIGC作品集，方向涵盖AI视频、IP角色、人物写真、电商海报、超级符号、电影海报与视觉实验。</p>
                 </div>
               </article>
             </div>
