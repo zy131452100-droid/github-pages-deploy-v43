@@ -18,7 +18,7 @@ const homeDirectoryItems = [
     label: "AI生成写真",
     tag: "AI PHOTO GALLERY",
     description: "商业人像、情绪写真、虚拟模特与电影感剧照的高级摄影画廊。",
-    status: "8 PLACEHOLDERS"
+    status: "8 WORKS"
   },
   {
     id: "ai-video",
@@ -49,7 +49,7 @@ const homeDirectoryItems = [
     index: "06",
     label: "超级符号",
     tag: "BRAND SYSTEM",
-    description: "品牌符号提案式排版，保留推导、拆解、应用延展与海报占位。",
+    description: "品牌符号提案式排版，呈现推导、拆解、应用延展与海报视觉。",
     status: "PROPOSAL"
   },
   {
@@ -65,7 +65,7 @@ const homeDirectoryItems = [
     index: "08",
     label: "关于我 / 联系方式",
     tag: "CONTACT",
-    description: "AIGC视觉设计师简介、工具链说明与联系方式占位。",
+    description: "AIGC视觉设计师简介、工具链说明与联系方式。",
     status: "INFO"
   }
 ];
@@ -177,7 +177,7 @@ const ecommerceTabs = [
     label: "风格参考海报",
     tag: "STYLE REFERENCE",
     works: Array.from({ length: 6 }, (_, index) => ({
-      title: `风格海报占位 ${String(index + 1).padStart(2, "0")}`,
+      title: `风格参考海报 ${String(index + 1).padStart(2, "0")}`,
       tag: "ECOMMERCE POSTER",
       keywords: "场景 / 氛围 / 视觉参考",
       assetSlot: `reference-${index + 1}`
@@ -188,7 +188,7 @@ const ecommerceTabs = [
     label: "人物参考海报",
     tag: "PERSONA REFERENCE",
     works: Array.from({ length: 6 }, (_, index) => ({
-      title: `人物参考占位 ${String(index + 1).padStart(2, "0")}`,
+      title: `人物参考海报 ${String(index + 1).padStart(2, "0")}`,
       tag: "ECOMMERCE POSTER",
       keywords: "人物 / 风格 / 商业海报",
       assetSlot: `persona-${index + 1}`
@@ -631,7 +631,7 @@ function renderPhotoGallery() {
           "02",
           "AI PHOTO GALLERY",
           "AI生成写真",
-          "以高级摄影画廊的节奏展示人像、时装、情绪与商业肖像方向。当前仅保留占位卡片，后续可替换为真实图片。"
+          "以高级摄影画廊的节奏展示人像、时装、情绪与商业肖像方向。"
         )}
         <div class="photo-grid ${photoWorks.length ? "uploaded-masonry uploaded-masonry-photo" : ""}">
           ${photoWorks.length
@@ -664,7 +664,7 @@ function renderVideoArchive() {
           "03",
           "AI VIDEO DOSSIER",
           "AI视频项目档案",
-          "重点呈现完整 AIGC 视频创作流程：最终成片占位、角色设定、场景概念与分镜设计。"
+          "重点呈现完整 AIGC 视频创作流程：最终成片、角色设定、场景概念与分镜设计。"
         )}
         <div class="video-projects">
           ${videoProjects.map(renderVideoProject).join("")}
@@ -902,14 +902,14 @@ function renderIPDesign() {
             </div>
             <div class="dossier-bottom compact-dossier-bottom">
               <div class="palette-card">
-                <span>色彩系统占位 / COLOR SYSTEM</span>
+                <span>色彩系统 / COLOR SYSTEM</span>
                 <div class="swatches">
                   ${swatches.map((color) => `<i style="background-color:${color}"></i>`).join("")}
                 </div>
               </div>
               <div class="world-card">
-                <span>世界观简介占位 / WORLD VIEW</span>
-                <p>这里预留角色背景、性格关键词、品牌应用场景与内容延展方向。后续替换真实 IP 设定时，可直接补充故事线与商业化应用说明。</p>
+                <span>世界观简介 / WORLD VIEW</span>
+                <p>呈现角色背景、性格关键词、品牌应用场景与内容延展方向，建立完整的角色故事线与商业化应用体系。</p>
               </div>
             </div>
           </article>
@@ -957,14 +957,14 @@ function renderIPDesign() {
           </div>
           <div class="dossier-bottom">
             <div class="palette-card">
-              <span>色彩系统占位 / COLOR SYSTEM</span>
+              <span>色彩系统 / COLOR SYSTEM</span>
               <div class="swatches">
                 ${swatches.map((color) => `<i style="background-color:${color}"></i>`).join("")}
               </div>
             </div>
             <div class="world-card">
-              <span>世界观简介占位 / WORLD VIEW</span>
-              <p>这里预留角色背景、性格关键词、品牌应用场景与内容延展方向。后续替换真实 IP 设定时，可直接补充故事线与商业化应用说明。</p>
+              <span>世界观简介 / WORLD VIEW</span>
+              <p>呈现角色背景、性格关键词、品牌应用场景与内容延展方向，建立完整的角色故事线与商业化应用体系。</p>
             </div>
           </div>
         </article>
@@ -1014,7 +1014,7 @@ function renderSuperSymbol() {
             "06",
             "BRAND SYSTEM PROPOSAL",
             "超级符号",
-            "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报占位。"
+            "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报视觉。"
           )}
           <article class="symbol-system uploaded-symbol-wall reveal">
             <div class="uploaded-masonry uploaded-masonry-symbol">
@@ -1033,7 +1033,7 @@ function renderSuperSymbol() {
           "06",
           "BRAND SYSTEM PROPOSAL",
           "超级符号",
-          "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报占位。"
+          "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报视觉。"
         )}
         <article class="symbol-system reveal">
           <div class="symbol-hero hover-lift">
@@ -1077,7 +1077,7 @@ function renderEcommerce() {
           "07",
           "COMMERCIAL POSTER SYSTEM",
           "电商海报",
-          "按风格参考海报、人物参考海报两个商业方向组织作品卡片，保持干净、可替换、便于扩展。"
+          "按风格参考海报、人物参考海报两个商业方向组织作品卡片，保持干净、统一、便于浏览。"
         )}
         <div class="tabs reveal" role="tablist" aria-label="电商海报分类">
           ${ecommerceTabs
