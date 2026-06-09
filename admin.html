@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理 / 上传作品</title>
+    <link rel="stylesheet" href="admin.css?v=aigc-admin-1" />
+  </head>
+  <body>
+    <div class="admin-background" aria-hidden="true"></div>
+
+    <header class="admin-header">
+      <div>
+        <span>ZHANG YU PORTFOLIO CMS</span>
+        <h1>作品上传后台</h1>
+      </div>
+      <a href="/?v=aigc-gallery-template-59" target="_blank" rel="noreferrer">打开前台</a>
+    </header>
+
+    <main class="admin-shell">
+      <section class="admin-panel upload-panel">
+        <div class="panel-heading">
+          <span>UPLOAD WORK</span>
+          <h2>上传新作品</h2>
+        </div>
+
+        <form id="uploadForm" class="upload-form">
+          <label>
+            <span>作品板块</span>
+            <select name="section" id="sectionSelect" required>
+              <option value="ai-photo">AI生成写真</option>
+              <option value="ai-video">AI视频项目档案</option>
+              <option value="ai-commercial">AI广告短片</option>
+              <option value="ip-design">IP形象设计</option>
+              <option value="super-symbol">超级符号</option>
+              <option value="ecommerce">电商海报</option>
+              <option value="ui-launch">UI启动页设计</option>
+            </select>
+          </label>
+
+          <label>
+            <span>分类</span>
+            <select name="category" id="categorySelect"></select>
+          </label>
+
+          <label>
+            <span>作品标题</span>
+            <input name="title" type="text" placeholder="例如：AI广告视频 03" required />
+          </label>
+
+          <label>
+            <span>英文标签</span>
+            <input name="tag" type="text" placeholder="AI COMMERCIAL / 15S" />
+          </label>
+
+          <label>
+            <span>关键词</span>
+            <input name="keywords" type="text" placeholder="品牌 / 产品 / 商业成片" />
+          </label>
+
+          <label>
+            <span>时长</span>
+            <input name="duration" type="text" placeholder="15S / 30S，可留空" />
+          </label>
+
+          <label class="wide-field">
+            <span>作品说明</span>
+            <textarea name="description" rows="4" placeholder="简短说明这个作品的视觉方向、用途或制作流程"></textarea>
+          </label>
+
+          <label class="file-field wide-field">
+            <span>作品文件</span>
+            <input name="file" id="fileInput" type="file" accept="image/*,video/mp4,video/webm,video/quicktime" required />
+            <strong>支持图片、MP4、WebM、MOV。视频建议使用 MP4。</strong>
+          </label>
+
+          <div class="preview-box wide-field" id="previewBox">
+            <span>PREVIEW</span>
+            <p>选择文件后显示预览</p>
+          </div>
+
+          <div class="upload-actions wide-field">
+            <button type="submit">上传作品</button>
+            <div class="progress-track" aria-label="上传进度">
+              <i id="progressBar"></i>
+            </div>
+          </div>
+
+          <p class="form-message wide-field" id="formMessage"></p>
+        </form>
+      </section>
+
+      <section class="admin-panel works-panel">
+        <div class="panel-heading">
+          <span>WORKS LIBRARY</span>
+          <h2>已上传作品</h2>
+        </div>
+        <div class="toolbar">
+          <select id="filterSelect" aria-label="筛选作品板块">
+            <option value="all">全部板块</option>
+            <option value="ai-photo">AI生成写真</option>
+            <option value="ai-video">AI视频项目档案</option>
+            <option value="ai-commercial">AI广告短片</option>
+            <option value="ip-design">IP形象设计</option>
+            <option value="super-symbol">超级符号</option>
+            <option value="ecommerce">电商海报</option>
+            <option value="ui-launch">UI启动页设计</option>
+          </select>
+          <button type="button" id="refreshButton">刷新</button>
+        </div>
+        <div class="works-list" id="worksList"></div>
+      </section>
+    </main>
+
+    <script src="admin.js?v=aigc-admin-2"></script>
+  </body>
+</html>

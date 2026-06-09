@@ -1044,6 +1044,11 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.ui-launch-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+}
+
 .masonry-work-card {
   display: block;
   overflow: hidden;
@@ -1089,6 +1094,30 @@ button {
 
 .uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
   aspect-ratio: 16 / 9;
+}
+
+.ui-launch-card.is-wide {
+  grid-column: span 3;
+}
+
+.ui-launch-card.is-portrait {
+  grid-column: span 2;
+}
+
+.ui-launch-card.is-wide-3x2 .uploaded-work-frame {
+  aspect-ratio: 3 / 2;
+}
+
+.ui-launch-card.is-wide-16x9 .uploaded-work-frame {
+  aspect-ratio: 16 / 9;
+}
+
+.ui-launch-card.is-portrait .uploaded-work-frame {
+  aspect-ratio: 9 / 16;
+}
+
+.ui-launch-card .uploaded-image {
+  object-fit: contain;
 }
 
 .character-materials.uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
@@ -2269,9 +2298,15 @@ button {
   .uploaded-masonry-photo,
   .uploaded-masonry-ip,
   .uploaded-masonry-symbol,
-  .uploaded-masonry-ecommerce {
+  .uploaded-masonry-ecommerce,
+  .ui-launch-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .ui-launch-card.is-wide,
+  .ui-launch-card.is-portrait {
+    grid-column: span 1;
   }
 
   .uploaded-masonry-process {
@@ -2360,7 +2395,8 @@ button {
   .uploaded-masonry-ip,
   .uploaded-masonry-symbol,
   .uploaded-masonry-ecommerce,
-  .uploaded-masonry-process {
+  .uploaded-masonry-process,
+  .ui-launch-grid {
     grid-template-columns: 1fr;
   }
 

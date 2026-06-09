@@ -6,10 +6,11 @@ const navItems = [
   { id: "ip-design", index: "05", label: "IP形象设计" },
   { id: "super-symbol", index: "06", label: "超级符号" },
   { id: "ecommerce", index: "07", label: "电商海报" },
-  { id: "about", index: "08", label: "关于我" }
+  { id: "ui-launch", index: "08", label: "UI启动页设计" },
+  { id: "about", index: "09", label: "关于我" }
 ];
 
-const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "SUPER SYMBOL", "E-COMMERCE VISUAL"];
+const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "SUPER SYMBOL", "E-COMMERCE VISUAL", "UI LAUNCH DESIGN"];
 
 const homeDirectoryItems = [
   {
@@ -61,8 +62,16 @@ const homeDirectoryItems = [
     status: "2 TABS"
   },
   {
-    id: "about",
+    id: "ui-launch",
     index: "08",
+    label: "UI启动页设计",
+    tag: "UI LAUNCH DESIGN",
+    description: "游戏启动页、品牌启动页与移动端首屏视觉设计，呈现主视觉、界面层级与启动氛围。",
+    status: "5 WORKS"
+  },
+  {
+    id: "about",
+    index: "09",
     label: "关于我 / 联系方式",
     tag: "CONTACT",
     description: "AIGC视觉设计师简介、工具链说明与联系方式。",
@@ -561,6 +570,7 @@ function renderPage() {
     ${renderIPDesign()}
     ${renderSuperSymbol()}
     ${renderEcommerce()}
+    ${renderUILaunchDesign()}
     ${renderAbout()}
   `;
 }
@@ -1128,11 +1138,40 @@ function renderEcommerceGrid() {
   fitUploadedImageFrames(grid);
 }
 
+function renderUILaunchDesign() {
+  const launchWorks = sortBySourcePath(getUploadedWorks("ui-launch", "gallery"));
+
+  return `
+    <section id="ui-launch" class="portfolio-section section-layer ui-launch-section">
+      <div class="section-inner">
+        ${sectionIntro(
+          "08",
+          "UI LAUNCH DESIGN",
+          "UI启动页设计",
+          "游戏启动页、品牌启动页与移动端首屏视觉设计，展示主视觉构图、界面层级、按钮视觉与启动氛围。"
+        )}
+        <div class="ui-launch-grid uploaded-masonry">
+          ${launchWorks
+            .map((work, index) => {
+              const frameClass = index === 0
+                ? "ui-launch-card is-wide is-wide-3x2"
+                : index === 1
+                  ? "ui-launch-card is-wide is-wide-16x9"
+                  : "ui-launch-card is-portrait";
+              return renderMasonryWorkCard(work, index, frameClass, true);
+            })
+            .join("")}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderAbout() {
   return `
     <section id="about" class="portfolio-section about-section section-layer">
       <div class="section-inner">
-        ${sectionIntro("08", "ABOUT / CONTACT", "关于我 / 联系方式")}
+        ${sectionIntro("09", "ABOUT / CONTACT", "关于我 / 联系方式")}
         <div class="about-grid resume-hero">
           <div class="about-copy reveal">
             <span class="resume-eyebrow">RESUME / PROFILE</span>
