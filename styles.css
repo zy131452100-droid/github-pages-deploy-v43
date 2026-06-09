@@ -1121,6 +1121,17 @@ button {
   aspect-ratio: 941 / 1672;
 }
 
+
+.uploaded-masonry-ecommerce .ecommerce-wide-card {
+  grid-column: 1 / -1;
+}
+
+.ecommerce-grid-reference.uploaded-masonry-ecommerce .ecommerce-wide-card .uploaded-work-frame,
+.ecommerce-grid-persona.uploaded-masonry-ecommerce .ecommerce-wide-card .uploaded-work-frame,
+.uploaded-masonry-ecommerce .ecommerce-wide-card .uploaded-work-frame {
+  aspect-ratio: 16 / 9;
+}
+
 .uploaded-masonry-ip .masonry-work-card .uploaded-work-frame {
   aspect-ratio: 4 / 5;
 }
@@ -2318,6 +2329,10 @@ button {
   .uploaded-masonry-ecommerce {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .uploaded-masonry-ecommerce .ecommerce-wide-card {
+    grid-column: 1 / -1;
   }
 
   .uploaded-masonry-ui {

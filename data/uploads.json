@@ -1871,6 +1871,40 @@
       "mimeType": "image/png",
       "size": 876824,
       "createdAt": "2026-06-09T09:35:00.000Z"
+    },
+    {
+      "id": "ecommerce-style-wide-01",
+      "section": "ecommerce",
+      "category": "reference",
+      "title": "风格参考海报 / 横版新增",
+      "tag": "STYLE REFERENCE POSTER",
+      "description": "电商海报 / 风格参考海报 / 横版铺满",
+      "keywords": "风格参考 / 横版海报 / 电商视觉",
+      "duration": "",
+      "fileUrl": "assets/uploads/178011000011-style-reference-wide-01.png",
+      "fileName": "1194b6e2-a5da-41f6-b4ab-e52b2d717dd7_d6a9a312-8e50-4653-90eb-a238188cb57d_21269053-27d9-4c69-8a8e-9daeba99a596.png",
+      "mediaType": "image",
+      "mimeType": "image/png",
+      "size": 1730506,
+      "createdAt": "2026-06-09T10:45:00.000Z",
+      "layout": "wide"
+    },
+    {
+      "id": "ecommerce-persona-wide-01",
+      "section": "ecommerce",
+      "category": "persona",
+      "title": "人物参考海报 / 横版新增",
+      "tag": "PERSONA REFERENCE POSTER",
+      "description": "电商海报 / 人物参考海报 / 横版铺满",
+      "keywords": "人物参考 / 横版海报 / 电商视觉",
+      "duration": "",
+      "fileUrl": "assets/uploads/178011060011-persona-reference-wide-01.png",
+      "fileName": "3b6c0a60-db90-4456-8908-753add04ab53_bf65ffe3-6461-4f63-b002-31170869ce96_ChatGPT Image 2026年6月9日 18_09_39.png",
+      "mediaType": "image",
+      "mimeType": "image/png",
+      "size": 1639653,
+      "createdAt": "2026-06-09T10:45:00.000Z",
+      "layout": "wide"
     }
   ]
 }

@@ -484,8 +484,9 @@ function renderUploadedWorkCard(work, index = 0) {
 }
 
 function renderMasonryWorkCard(work, index = 0, extraClass = "", visible = false) {
+  const layoutClass = work.layout === "wide" ? "ecommerce-wide-card" : "";
   return `
-    <article class="masonry-work-card ${extraClass} hover-lift reveal ${visible ? "visible" : ""}" style="transition-delay:${index * 24}ms">
+    <article class="masonry-work-card ${extraClass} ${layoutClass} hover-lift reveal ${visible ? "visible" : ""}" style="transition-delay:${index * 24}ms">
       <div class="uploaded-work-frame">
         ${renderUploadedMedia(work)}
       </div>
