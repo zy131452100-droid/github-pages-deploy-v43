@@ -1228,10 +1228,14 @@ function renderAbout() {
             </p>
           </div>
           <div class="contact-panel reveal">
-            ${["EMAIL", "WECHAT", "PORTFOLIO"].map((item) => `
+            ${[
+              ["EMAIL", "2425794044@qq.com"],
+              ["WECHAT", "zyhsssl123"],
+              ["PHONE", "17635134797"]
+            ].map(([item, value]) => `
               <div class="contact-row">
                 <span>${item}</span>
-                <p>PLACEHOLDER</p>
+                <p>${value}</p>
               </div>
             `).join("")}
           </div>
