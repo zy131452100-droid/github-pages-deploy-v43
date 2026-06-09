@@ -5,12 +5,13 @@ const navItems = [
   { id: "ai-commercial", index: "04", label: "AI广告短片" },
   { id: "ip-design", index: "05", label: "IP形象设计" },
   { id: "ui-launch", index: "06", label: "UI启动页" },
-  { id: "super-symbol", index: "07", label: "超级符号" },
-  { id: "ecommerce", index: "08", label: "电商海报" },
-  { id: "about", index: "09", label: "关于我" }
+  { id: "art-typography", index: "07", label: "艺术字体海报设计" },
+  { id: "super-symbol", index: "08", label: "超级符号" },
+  { id: "ecommerce", index: "09", label: "电商海报" },
+  { id: "about", index: "10", label: "关于我" }
 ];
 
-const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "SUPER SYMBOL", "E-COMMERCE VISUAL", "UI LAUNCH"];
+const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "UI LAUNCH", "ART TYPOGRAPHY", "SUPER SYMBOL", "E-COMMERCE VISUAL"];
 
 const homeDirectoryItems = [
   {
@@ -54,8 +55,16 @@ const homeDirectoryItems = [
     status: "5 WORKS"
   },
   {
-    id: "super-symbol",
+    id: "art-typography",
     index: "07",
+    label: "艺术字体海报设计",
+    tag: "ART TYPOGRAPHY POSTER",
+    description: "横版艺术字海报与竖版主题字体海报的视觉设计展示。",
+    status: "8 WORKS"
+  },
+  {
+    id: "super-symbol",
+    index: "08",
     label: "超级符号",
     tag: "BRAND SYSTEM",
     description: "品牌符号提案式排版，呈现推导、拆解、应用延展与海报视觉。",
@@ -63,7 +72,7 @@ const homeDirectoryItems = [
   },
   {
     id: "ecommerce",
-    index: "08",
+    index: "09",
     label: "电商海报",
     tag: "COMMERCIAL POSTER",
     description: "风格参考海报、人物参考海报两类商业视觉入口。",
@@ -71,7 +80,7 @@ const homeDirectoryItems = [
   },
   {
     id: "about",
-    index: "09",
+    index: "10",
     label: "关于我 / 联系方式",
     tag: "CONTACT",
     description: "AIGC视觉设计师简介、工具链说明与联系方式。",
@@ -569,6 +578,7 @@ function renderPage() {
     ${renderCommercialVideos()}
     ${renderIPDesign()}
     ${renderUILaunch()}
+    ${renderArtTypography()}
     ${renderSuperSymbol()}
     ${renderEcommerce()}
     ${renderAbout()}
@@ -1040,7 +1050,7 @@ function renderSuperSymbol() {
     <section id="super-symbol" class="portfolio-section section-layer">
       <div class="section-inner">
         ${sectionIntro(
-          "07",
+          "08",
           "BRAND SYSTEM PROPOSAL",
           "超级符号",
           "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报视觉。"
@@ -1084,7 +1094,7 @@ function renderEcommerce() {
     <section id="ecommerce" class="portfolio-section section-layer">
       <div class="section-inner">
         ${sectionIntro(
-          "08",
+          "09",
           "COMMERCIAL POSTER SYSTEM",
           "电商海报",
           "按风格参考海报、人物参考海报两个商业方向组织作品卡片，保持干净、统一、便于浏览。"
@@ -1169,11 +1179,42 @@ function renderUILaunch() {
   `;
 }
 
+function renderArtTypography() {
+  const artWorks = sortBySourcePath(getUploadedWorks("art-typography", "gallery"));
+
+  return `
+    <section id="art-typography" class="portfolio-section section-layer art-typography-section">
+      <div class="section-inner">
+        ${sectionIntro(
+          "07",
+          "ART TYPOGRAPHY POSTER",
+          "艺术字体海报设计",
+          "展示艺术字、主题字形与商业海报视觉的结合。横版作品全宽呈现，竖版作品两列排版，突出字体造型、画面氛围和视觉冲击力。"
+        )}
+        <div class="art-typography-grid uploaded-masonry uploaded-masonry-art">
+          ${artWorks.length
+            ? artWorks.map((work, index) => renderMasonryWorkCard(work, index, "art-typography-masonry-card")).join("")
+            : Array.from({ length: 8 }, (_, index) => `
+                <article class="ecommerce-card reveal hover-lift" style="transition-delay:${index * 30}ms">
+                  ${placeholder("ART TYPE", "POSTER PLACEHOLDER", index < 4 ? "wide" : "poster")}
+                  <div class="card-meta">
+                    <span>ART TYPOGRAPHY POSTER</span>
+                    <h3>艺术字体海报 ${String(index + 1).padStart(2, "0")}</h3>
+                    <p>艺术字 / 海报设计 / 视觉表现</p>
+                  </div>
+                </article>
+              `).join("")}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderAbout() {
   return `
     <section id="about" class="portfolio-section about-section section-layer">
       <div class="section-inner">
-        ${sectionIntro("09", "ABOUT / CONTACT", "关于我 / 联系方式")}
+        ${sectionIntro("10", "ABOUT / CONTACT", "关于我 / 联系方式")}
         <div class="about-grid resume-hero">
           <div class="about-copy reveal">
             <span class="resume-eyebrow">RESUME / PROFILE</span>
@@ -1253,8 +1294,8 @@ function renderAbout() {
               <h3>精选项目</h3>
             </div>
             <div class="resume-project-list">
-              ${["AI短片《机器人想看一次海》", "AIGC人物写真系列", "IP角色设计系列", "UI启动页视觉设计", "超级符号与品牌视觉", "电商AIGC视觉设计"].map((project, index) => `
-                <a href="#${["ai-video", "ai-photo", "ip-design", "ui-launch", "super-symbol", "ecommerce"][index]}" data-section-link="${["ai-video", "ai-photo", "ip-design", "ui-launch", "super-symbol", "ecommerce"][index]}">
+              ${["AI短片《机器人想看一次海》", "AIGC人物写真系列", "IP角色设计系列", "UI启动页视觉设计", "艺术字体海报设计", "超级符号与品牌视觉", "电商AIGC视觉设计"].map((project, index) => `
+                <a href="#${["ai-video", "ai-photo", "ip-design", "ui-launch", "art-typography", "super-symbol", "ecommerce"][index]}" data-section-link="${["ai-video", "ai-photo", "ip-design", "ui-launch", "art-typography", "super-symbol", "ecommerce"][index]}">
                   <span>${String(index + 1).padStart(2, "0")}</span>
                   <p>${project}</p>
                 </a>
