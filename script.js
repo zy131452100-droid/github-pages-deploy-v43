@@ -4,13 +4,13 @@ const navItems = [
   { id: "ai-video", index: "03", label: "AI视频" },
   { id: "ai-commercial", index: "04", label: "AI广告短片" },
   { id: "ip-design", index: "05", label: "IP形象设计" },
-  { id: "super-symbol", index: "06", label: "超级符号" },
-  { id: "ecommerce", index: "07", label: "电商海报" },
-  { id: "ui-launch", index: "08", label: "UI启动页设计" },
+  { id: "ui-launch", index: "06", label: "UI启动页" },
+  { id: "super-symbol", index: "07", label: "超级符号" },
+  { id: "ecommerce", index: "08", label: "电商海报" },
   { id: "about", index: "09", label: "关于我" }
 ];
 
-const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "SUPER SYMBOL", "E-COMMERCE VISUAL", "UI LAUNCH DESIGN"];
+const abilityTags = ["AI PHOTO", "AI VIDEO", "AI COMMERCIAL", "IP DESIGN", "SUPER SYMBOL", "E-COMMERCE VISUAL", "UI LAUNCH"];
 
 const homeDirectoryItems = [
   {
@@ -46,8 +46,16 @@ const homeDirectoryItems = [
     status: "DOSSIER"
   },
   {
-    id: "super-symbol",
+    id: "ui-launch",
     index: "06",
+    label: "UI启动页",
+    tag: "UI LAUNCH DESIGN",
+    description: "游戏、品牌、应用等方向的启动页与首屏视觉设计展示。",
+    status: "5 WORKS"
+  },
+  {
+    id: "super-symbol",
+    index: "07",
     label: "超级符号",
     tag: "BRAND SYSTEM",
     description: "品牌符号提案式排版，呈现推导、拆解、应用延展与海报视觉。",
@@ -55,19 +63,11 @@ const homeDirectoryItems = [
   },
   {
     id: "ecommerce",
-    index: "07",
+    index: "08",
     label: "电商海报",
     tag: "COMMERCIAL POSTER",
     description: "风格参考海报、人物参考海报两类商业视觉入口。",
     status: "2 TABS"
-  },
-  {
-    id: "ui-launch",
-    index: "08",
-    label: "UI启动页设计",
-    tag: "UI LAUNCH DESIGN",
-    description: "游戏启动页、品牌启动页与移动端首屏视觉设计，呈现主视觉、界面层级与启动氛围。",
-    status: "5 WORKS"
   },
   {
     id: "about",
@@ -568,9 +568,9 @@ function renderPage() {
     ${renderVideoArchive()}
     ${renderCommercialVideos()}
     ${renderIPDesign()}
+    ${renderUILaunch()}
     ${renderSuperSymbol()}
     ${renderEcommerce()}
-    ${renderUILaunchDesign()}
     ${renderAbout()}
   `;
 }
@@ -1040,7 +1040,7 @@ function renderSuperSymbol() {
     <section id="super-symbol" class="portfolio-section section-layer">
       <div class="section-inner">
         ${sectionIntro(
-          "06",
+          "07",
           "BRAND SYSTEM PROPOSAL",
           "超级符号",
           "用品牌提案的逻辑展示符号核心、推导、图形拆解、应用延展与海报视觉。"
@@ -1084,7 +1084,7 @@ function renderEcommerce() {
     <section id="ecommerce" class="portfolio-section section-layer">
       <div class="section-inner">
         ${sectionIntro(
-          "07",
+          "08",
           "COMMERCIAL POSTER SYSTEM",
           "电商海报",
           "按风格参考海报、人物参考海报两个商业方向组织作品卡片，保持干净、统一、便于浏览。"
@@ -1138,29 +1138,31 @@ function renderEcommerceGrid() {
   fitUploadedImageFrames(grid);
 }
 
-function renderUILaunchDesign() {
-  const launchWorks = sortBySourcePath(getUploadedWorks("ui-launch", "gallery"));
+function renderUILaunch() {
+  const uiWorks = sortBySourcePath(getUploadedWorks("ui-launch", "gallery"));
 
   return `
     <section id="ui-launch" class="portfolio-section section-layer ui-launch-section">
       <div class="section-inner">
         ${sectionIntro(
-          "08",
+          "06",
           "UI LAUNCH DESIGN",
-          "UI启动页设计",
-          "游戏启动页、品牌启动页与移动端首屏视觉设计，展示主视觉构图、界面层级、按钮视觉与启动氛围。"
+          "UI启动页",
+          "集中展示游戏、品牌、应用等方向的启动页与首屏视觉设计，强调主题氛围、信息层级和视觉冲击力。"
         )}
-        <div class="ui-launch-grid uploaded-masonry">
-          ${launchWorks
-            .map((work, index) => {
-              const frameClass = index === 0
-                ? "ui-launch-card is-wide is-wide-3x2"
-                : index === 1
-                  ? "ui-launch-card is-wide is-wide-16x9"
-                  : "ui-launch-card is-portrait";
-              return renderMasonryWorkCard(work, index, frameClass, true);
-            })
-            .join("")}
+        <div class="ui-launch-grid uploaded-masonry uploaded-masonry-ui">
+          ${uiWorks.length
+            ? uiWorks.map((work, index) => renderMasonryWorkCard(work, index, "ui-launch-masonry-card")).join("")
+            : Array.from({ length: 5 }, (_, index) => `
+                <article class="ecommerce-card reveal hover-lift" style="transition-delay:${index * 30}ms">
+                  ${placeholder("UI LAUNCH", "IMAGE PLACEHOLDER", index < 2 ? "wide" : "poster")}
+                  <div class="card-meta">
+                    <span>UI LAUNCH DESIGN</span>
+                    <h3>UI启动页 ${String(index + 1).padStart(2, "0")}</h3>
+                    <p>启动页 / 首屏视觉 / 氛围设计</p>
+                  </div>
+                </article>
+              `).join("")}
         </div>
       </div>
     </section>
@@ -1263,8 +1265,8 @@ function renderAbout() {
               <h3>精选项目</h3>
             </div>
             <div class="resume-project-list">
-              ${["AI短片《机器人想看一次海》", "AIGC人物写真系列", "IP角色设计系列", "电商AIGC视觉设计", "超级符号与品牌视觉"].map((project, index) => `
-                <a href="#${["ai-video", "ai-photo", "ip-design", "ecommerce", "super-symbol"][index]}" data-section-link="${["ai-video", "ai-photo", "ip-design", "ecommerce", "super-symbol"][index]}">
+              ${["AI短片《机器人想看一次海》", "AIGC人物写真系列", "IP角色设计系列", "UI启动页视觉设计", "超级符号与品牌视觉", "电商AIGC视觉设计"].map((project, index) => `
+                <a href="#${["ai-video", "ai-photo", "ip-design", "ui-launch", "super-symbol", "ecommerce"][index]}" data-section-link="${["ai-video", "ai-photo", "ip-design", "ui-launch", "super-symbol", "ecommerce"][index]}">
                   <span>${String(index + 1).padStart(2, "0")}</span>
                   <p>${project}</p>
                 </a>

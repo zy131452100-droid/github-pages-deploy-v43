@@ -1040,13 +1040,13 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.uploaded-masonry-process {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.uploaded-masonry-ui {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
 }
 
-.ui-launch-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 18px;
+.uploaded-masonry-process {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .masonry-work-card {
@@ -1076,6 +1076,22 @@ button {
   aspect-ratio: 4 / 5;
 }
 
+.uploaded-masonry-ui .masonry-work-card {
+  grid-column: span 2;
+}
+
+.uploaded-masonry-ui .masonry-work-card:nth-child(-n + 2) {
+  grid-column: 1 / -1;
+}
+
+.uploaded-masonry-ui .masonry-work-card .uploaded-work-frame {
+  aspect-ratio: 941 / 1672;
+}
+
+.uploaded-masonry-ui .masonry-work-card:nth-child(-n + 2) .uploaded-work-frame {
+  aspect-ratio: 16 / 10;
+}
+
 .ecommerce-grid-reference.uploaded-masonry-ecommerce .masonry-work-card .uploaded-work-frame {
   aspect-ratio: 941 / 1672;
 }
@@ -1096,30 +1112,6 @@ button {
   aspect-ratio: 16 / 9;
 }
 
-.ui-launch-card.is-wide {
-  grid-column: span 3;
-}
-
-.ui-launch-card.is-portrait {
-  grid-column: span 2;
-}
-
-.ui-launch-card.is-wide-3x2 .uploaded-work-frame {
-  aspect-ratio: 3 / 2;
-}
-
-.ui-launch-card.is-wide-16x9 .uploaded-work-frame {
-  aspect-ratio: 16 / 9;
-}
-
-.ui-launch-card.is-portrait .uploaded-work-frame {
-  aspect-ratio: 9 / 16;
-}
-
-.ui-launch-card .uploaded-image {
-  object-fit: contain;
-}
-
 .character-materials.uploaded-masonry-process .masonry-work-card .uploaded-work-frame {
   aspect-ratio: 4 / 5;
 }
@@ -1138,6 +1130,7 @@ button {
 
 .dossier-masonry-card .uploaded-image,
 .symbol-masonry-card .uploaded-image,
+.ui-launch-masonry-card .uploaded-image,
 .dossier-card .uploaded-image,
 .dossier-main .uploaded-image,
 .symbol-card .uploaded-image,
@@ -1691,6 +1684,7 @@ button {
 
 .photo-grid.uploaded-masonry,
 .ecommerce-grid.uploaded-masonry,
+.ui-launch-grid.uploaded-masonry,
 .process-materials.uploaded-masonry,
 .storyboard-wall.uploaded-masonry {
   display: grid;
@@ -2298,15 +2292,22 @@ button {
   .uploaded-masonry-photo,
   .uploaded-masonry-ip,
   .uploaded-masonry-symbol,
-  .uploaded-masonry-ecommerce,
-  .ui-launch-grid {
+  .uploaded-masonry-ecommerce {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .ui-launch-card.is-wide,
-  .ui-launch-card.is-portrait {
+  .uploaded-masonry-ui {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .uploaded-masonry-ui .masonry-work-card {
     grid-column: span 1;
+  }
+
+  .uploaded-masonry-ui .masonry-work-card:nth-child(-n + 2) {
+    grid-column: 1 / -1;
   }
 
   .uploaded-masonry-process {
@@ -2395,9 +2396,14 @@ button {
   .uploaded-masonry-ip,
   .uploaded-masonry-symbol,
   .uploaded-masonry-ecommerce,
-  .uploaded-masonry-process,
-  .ui-launch-grid {
+  .uploaded-masonry-ui,
+  .uploaded-masonry-process {
     grid-template-columns: 1fr;
+  }
+
+  .uploaded-masonry-ui .masonry-work-card,
+  .uploaded-masonry-ui .masonry-work-card:nth-child(-n + 2) {
+    grid-column: span 1;
   }
 
   .photo-grid,
