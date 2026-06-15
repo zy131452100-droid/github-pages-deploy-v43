@@ -1230,7 +1230,7 @@ function renderAbout() {
           </div>
           <div class="contact-panel reveal">
             ${[
-              ["EMAIL", "2425794044@qq.com"],
+              ["EMAIL", "zy131452100@gmail.com"],
               ["WECHAT", "zyhsssl123"],
               ["PHONE", "17635134797"]
             ].map(([item, value]) => `
