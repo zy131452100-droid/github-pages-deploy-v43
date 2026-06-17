@@ -846,6 +846,10 @@ button {
   gap: 18px;
 }
 
+.commercial-video-card.is-full-width {
+  grid-column: 1 / -1;
+}
+
 .commercial-video-card {
   overflow: hidden;
   padding: 12px;

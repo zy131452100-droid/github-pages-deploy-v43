@@ -35,8 +35,8 @@ const homeDirectoryItems = [
     index: "04",
     label: "AI广告短片",
     tag: "AI COMMERCIAL REEL",
-    description: "收录两条 15 秒 AI 广告视频与一条 30 秒 AI 小短片，作为商业成片展示页。",
-    status: "3 VIDEOS"
+    description: "收录两条 15 秒 AI 广告视频、一条 30 秒 AI 小短片与一条精选 REEL 合集，作为商业成片展示页。",
+    status: "4 VIDEOS"
   },
   {
     id: "ip-design",
@@ -153,6 +153,16 @@ const commercialVideoItems = [
     description: "用于展示 AIGC 叙事、情绪镜头和短片节奏控制的 30 秒小短片。",
     bilibiliBvid: "BV1RkV46vEAd",
     sourceUrl: "https://www.bilibili.com/video/BV1RkV46vEAd/"
+  },
+  {
+    index: "FILM 02",
+    title: "AI短片精选",
+    tag: "AI SHORT FILM / 2026",
+    duration: "REEL",
+    description: "BV1D9jL6uE96 —— 情绪镜头、节奏剪辑与商业视觉的综合展示，AIGC 叙事短片合集。",
+    bilibiliBvid: "BV1D9jL6uE96",
+    sourceUrl: "https://www.bilibili.com/video/BV1D9jL6uE96/",
+    isFullWidth: true
   }
 ];
 
@@ -703,7 +713,7 @@ function renderCommercialVideos() {
           "04",
           "AI COMMERCIAL REEL",
           "AI广告短片",
-          "新增两条 15 秒 AI 广告视频与一条 30 秒 AI 小短片，集中展示商业成片、投放节奏和短片叙事能力。"
+          "收录两条 15 秒 AI 广告视频、一条 30 秒 AI 小短片与一条精选 REEL 合集，集中展示商业成片、投放节奏和短片叙事能力。"
         )}
         <div class="commercial-video-grid">
           ${commercialVideoItems.map(renderCommercialVideoCard).join("")}
@@ -716,7 +726,7 @@ function renderCommercialVideos() {
 
 function renderCommercialVideoCard(item) {
   return `
-    <article class="commercial-video-card hover-lift reveal">
+    <article class="commercial-video-card hover-lift reveal ${item.isFullWidth ? "is-full-width" : ""}">
       <div class="commercial-video-frame">
         ${renderVideoMedia(item)}
       </div>
