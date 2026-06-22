@@ -27,8 +27,8 @@ const homeDirectoryItems = [
     index: "03",
     label: "AI视频",
     tag: "AI VIDEO DOSSIER",
-    description: "两个视频项目档案，展示角色、场景与分镜制作流程。",
-    status: "2 PROJECTS"
+    description: "一个视频项目档案，展示角色、场景与分镜制作流程。",
+    status: "1 PROJECT"
   },
   {
     id: "ai-commercial",
@@ -113,16 +113,6 @@ const videoProjects = [
     sourceUrl: "https://www.bilibili.com/video/BV15kV46iEng/",
     processSource: "robot",
     assetSlot: "ai-video-robot-sea"
-  },
-  {
-    index: "PROJECT 02",
-    title: "重生后，我手撕白莲妹妹",
-    tag: "AI VIDEO PROJECT / 2026",
-    description: "展示从人物设定、场景概念、分镜设计到视频生成的完整 AIGC 视频创作流程。",
-    bilibiliBvid: "BV1tWV96YEG7",
-    sourceUrl: "https://www.bilibili.com/video/BV1tWV96YEG7/",
-    processSource: "drama",
-    assetSlot: "ai-video-project-02"
   }
 ];
 
@@ -291,10 +281,6 @@ function getRobotProcessWorks() {
   return sortBySourcePath(getUploadedWorks("ai-video", "process").filter((work) => getWorkSource(work).startsWith("机器人想看海/")));
 }
 
-function getDramaProcessWorks() {
-  return sortBySourcePath(getUploadedWorks("ai-video", "process").filter((work) => getWorkSource(work).startsWith("ai漫剧/")));
-}
-
 function curateRobotProcessWorks() {
   const works = getRobotProcessWorks();
   const selected = [];
@@ -324,27 +310,16 @@ function curateRobotProcessWorks() {
 }
 
 function getProcessWorksForStep(project, stepNumber) {
-  const isRobot = project.processSource === "robot";
-  const works = isRobot ? getRobotProcessWorks() : getDramaProcessWorks();
+  const works = getRobotProcessWorks();
 
   if (stepNumber === "01") {
     return works
-      .filter((work) => {
-        const source = getWorkSource(work);
-        if (isRobot) return source.includes("机器人形象/");
-        return source.includes("漫剧人物设定/") && !source.includes("林家亲戚");
-      })
-      .slice(0, isRobot ? 4 : 12);
+      .filter((work) => getWorkSource(work).includes("机器人形象/"))
+      .slice(0, 4);
   }
 
   if (stepNumber === "02") {
-    const sceneWorks = works.filter((work) => {
-      const source = getWorkSource(work);
-      if (isRobot) return source.includes("机器人场景图/场景图");
-      return source.includes("ai漫剧/场景图/") && !source.includes("d30569dc6d5f3ca77cd67873a9ebe8f5");
-    });
-
-    if (!isRobot) return sceneWorks.slice(0, 3);
+    const sceneWorks = works.filter((work) => getWorkSource(work).includes("机器人场景图/场景图"));
 
     const selectedRobotScenes = [
       "场景图1/",
@@ -366,17 +341,6 @@ function getProcessWorksForStep(project, stepNumber) {
   }
 
   if (stepNumber === "03") {
-    if (!isRobot) {
-      const selectedDramaStoryboardFiles = new Set(["4.png", "6.png", "7.png", "10.png"]);
-      return works
-        .filter((work) => {
-          const source = getWorkSource(work);
-          const fileName = source.split("/").pop();
-          return source.includes("第五集分镜图/") && selectedDramaStoryboardFiles.has(fileName);
-        })
-        .slice(0, 4);
-    }
-
     return works
       .filter((work) => {
         const source = getWorkSource(work);
@@ -400,8 +364,6 @@ function getProcessCardTitle(work) {
   if (source.includes("机器分镜图/")) return `分镜 ${fileName}`;
   if (source.includes("机器人形象/")) return `机器人形象 ${fileName}`;
   if (source.includes("机器人场景图/")) return `场景概念 ${fileName}`;
-  if (source.includes("漫剧人物设定/")) return fileName;
-  if (source.includes("场景图/")) return `场景图 ${fileName}`;
   if (source.includes("封面")) return "主视觉封面";
   return fileName;
 }
